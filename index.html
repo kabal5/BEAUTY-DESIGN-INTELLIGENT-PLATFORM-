@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaska beauty products</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Discover premium beauty products, organic skincare, and luxury cosmetics at the Beauty Design Intelligent Platform. Experience bespoke elegance.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Premium Header / Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#home" class="logo" id="logo-link">
+        <span class="logo-accent">Beauty</span>Design
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active" data-page="home">Shop</a>
+        <a href="#about" class="nav-link" data-page="about">About</a>
+        <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+        <span id="admin-nav-item" class="hidden">
+          <a href="#admin" class="nav-link admin-badge-link" data-page="admin"><i class="fa-solid fa-user-gear"></i> Admin Panel</a>
+        </span>
+      </nav>
+
+      <div class="search-bar-container">
+        <input type="text" id="global-search" placeholder="Search products, skincare...">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      </div>
+
+      <div class="header-actions">
+        <!-- Auth Indicator -->
+        <div id="auth-status-container">
+          <a href="#login" class="btn-auth" id="btn-login-redirect">
+            <i class="fa-regular fa-user"></i> <span>Sign In</span>
+          </a>
+        </div>
+
+        <!-- Cart Button -->
+        <button class="cart-trigger" id="cart-trigger" aria-label="Open Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-badge" id="cart-badge-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main Content Container -->
+  <main id="app-root">
+    <!-- Component views will be injected here dynamically -->
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+  </main>
+
+  <!-- Sliding Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Selection</h3>
+      <button class="btn-close-cart" id="btn-close-cart" aria-label="Close Cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Dynamic cart items will be rendered here -->
+      <div class="cart-empty-message">
+        <i class="fa-solid fa-feather-pointed"></i>
+        <p>Your bag is currently empty.</p>
+        <a href="#home" class="btn-shop-now" id="btn-empty-shop">Explore Products</a>
+      </div>
+    </div>
+    
+    <div class="cart-drawer-footer" id="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span class="cart-subtotal-amount" id="cart-subtotal-amount">Ksh 0.00</span>
+      </div>
+      <p class="cart-tax-notice">Shipping and taxes calculated at checkout.</p>
+      <button class="btn-checkout" id="btn-proceed-checkout">
+        Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Premium Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#home" class="footer-logo">
+          <span class="logo-accent">Beauty</span>Design
+        </a>
+        <p class="footer-tagline">Intelligent curations for elevated beauty, skincare, and timeless elegance.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Collection</h4>
+        <ul>
+          <li><a href="#home" data-filter="Skincare">Skincare Essentials</a></li>
+          <li><a href="#home" data-filter="Cosmetics">Luxury Cosmetics</a></li>
+          <li><a href="#home" data-filter="Haircare">Premium Haircare</a></li>
+          <li><a href="#home" data-filter="Fragrance">Sensory Fragrances</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Support</a></li>
+          <li><a href="#home">Shipping & Returns</a></li>
+          <li><a href="#home">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>The Beauty Circle</h4>
+        <p>Subscribe to receive curated tips, product releases, and exclusive access.</p>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter!'); this.reset();">
+          <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Final Year Project |Liban Kabale Guyo.  DIT-02-0432/2025 </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/database.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
